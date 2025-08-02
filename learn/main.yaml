@@ -1,0 +1,21 @@
+name: Yandex Practicum Project sprint 2
+
+conda_env: my_conda_env.yaml
+
+entry_points:
+  train:
+    parameters:
+      data_file: path
+      learning_rate: float
+    command: "python3 /src/model/train.py --path {data_file} --lr {learning_rate}"
+  
+  validate_model:
+    parameters:
+      model_file: path
+      data_source_uri: uri
+    command: "python3 /src/model/validate.py --model_path {model_file} -ds {data_source_uri}"
+
+  predict:
+    parameters:
+      input_data: path
+    command: "python3 /src/model/predict.py --input_path {input_data}"
